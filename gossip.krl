@@ -100,7 +100,7 @@ ruleset gossip {
    select when gossip heartbeat where get_status() == "on"
    pre {
      peer = get_peer().klog("peer: ")
-     message_type = (random:integer(5) <= -1) => "rumor" | "seen";
+     message_type = (random:integer(5) <= 3) => "rumor" | "seen";
      message = prepare_message(message_type).klog("Sending: ")
    }
    if (not message.isnull() && not peer.isnull()) then
